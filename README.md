@@ -15,9 +15,10 @@ node index.js
 
 How to setup the app
 -----
-
+```
 npm init
 npm i -s express
+```
 
 
 
