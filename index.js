@@ -1,3 +1,5 @@
+const path = require('path');
+
 //Import the express dependency.
 const express = require('express');
 
@@ -9,7 +11,7 @@ const port = 5000;
 
 //Get request to the root ("/")
 app.get('/', (req, res) => {
-  res.sendFile('index.html', {root: __dirname});
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 //The server listens for any attempts from a client to connect at the port.
@@ -17,4 +19,6 @@ app.listen(port, () => {
   console.log(`Now listening on port ${port}`);
 });
 
+//static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
