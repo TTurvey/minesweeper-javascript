@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const emptyArray = Array(squaresAmount - mines).fill('not a mine');
       console.log(emptyArray);
 
+      // Joining the mine and empty arrays.
+      const boardArray = mineArray.concat(emptyArray)
+      console.log(boardArray);
+
       for (let i=0 ; i < length * width; i++){
         const square = document.createElement('div');
         square.setAttribute('id', i);
