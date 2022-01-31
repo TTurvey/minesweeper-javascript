@@ -17,16 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Making an array the size of the amount of empty squares on the board.
       // Fills each array index with a string 'not a mine'.
-      const emptyArray = Array(squaresAmount - mines).fill('not a mine');
+      const emptyArray = Array(squaresAmount - mines).fill('not-a-mine');
       console.log(emptyArray);
 
       // Joining the mine and empty arrays.
       const boardArray = mineArray.concat(emptyArray);
       console.log(boardArray);
       
-      // Delaring a new variable for the starting array otherwise the game setup 
-      // with number of mines wouldn't be taken into account in subsequent games.
-      // let shuffledArray = boardArray;
+      // Delaring a new variable for the pre-shuffled array otherwise the game setup 
+      // with number of mines etc wouldn't be taken into account in subsequent games.
       let shuffledArray = [].concat(boardArray)
 
       const shuffle = (shuffledArray) => {
@@ -46,10 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
           shuffledArray[rand] = oldElement;
         }
       };
+
       shuffle(shuffledArray);
       console.log(shuffledArray);
       
-
       for (let i=0 ; i < length * width; i++) {
         const square = document.createElement('div');
         square.setAttribute('id', i);
