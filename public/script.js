@@ -15,7 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const mineArray = Array(mines).fill('mine');
       console.log(mineArray);
 
-
+      // Making an array the size of the amount of empty squares on the board.
+      // Fills each array index with a string 'not a mine'.
+      const emptyArray = Array(squaresAmount - mines).fill('not a mine');
+      console.log(emptyArray);
 
       for (let i=0 ; i < length * width; i++){
         const square = document.createElement('div');
