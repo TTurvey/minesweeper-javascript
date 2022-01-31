@@ -38,3 +38,16 @@ FILES:
 ----
 * index.js - This is the server code.
 * index.html - This is the client code.
+
+
+
+
+
+Randomising the board of mines:
+-----
+
+
+Sources:
+https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+https://bost.ocks.org/mike/shuffle/
+https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle

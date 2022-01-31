@@ -21,8 +21,34 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(emptyArray);
 
       // Joining the mine and empty arrays.
-      const boardArray = mineArray.concat(emptyArray)
+      const boardArray = mineArray.concat(emptyArray);
       console.log(boardArray);
+      
+      // Delaring a new variable for the starting array otherwise the game setup 
+      // with number of mines wouldn't be taken into account in subsequent games.
+      // let shuffledArray = boardArray;
+      let shuffledArray = [].concat(boardArray)
+
+      const shuffle = (shuffledArray) => {
+        
+        // Declaring a variable for the current position of each array element.
+        let oldElement;
+
+        // For each array element, counting down until there ar none left to shuffle.
+        for (let i = shuffledArray.length - 1; i > 0; i--) {
+
+          // Pick a remaining array element at random.
+          let rand = Math.floor(Math.random() * (i + 1));
+
+          // Swap the random array element with the current array element.
+          oldElement = shuffledArray[i];
+          shuffledArray[i] = shuffledArray[rand];
+          shuffledArray[rand] = oldElement;
+        }
+      };
+      shuffle(shuffledArray);
+      console.log(shuffledArray);
+      
 
       for (let i=0 ; i < length * width; i++){
         const square = document.createElement('div');
