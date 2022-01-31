@@ -1,18 +1,13 @@
-const path = require('path');
-
-//Import the express dependency.
+//Import the dependencies.
 const express = require('express');
+// const bodyParser = require('body-parser');
+// const cors = require('cors');
 
 //Instantiate an express app.
 const app = express();
 
 //The port number that the server will be listening to.
-const port = 5000;
-
-//Get request to the root ("/")
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/index.html'));
-});
+const port = process.env.PORT || 3000;
 
 //The server listens for any attempts from a client to connect at the port.
 app.listen(port, () => {
@@ -20,5 +15,8 @@ app.listen(port, () => {
 });
 
 //static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
+
+
+// 
