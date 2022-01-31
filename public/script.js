@@ -50,9 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(shuffledArray);
       
 
-      for (let i=0 ; i < length * width; i++){
+      for (let i=0 ; i < length * width; i++) {
         const square = document.createElement('div');
         square.setAttribute('id', i);
+        square.classList.add(shuffledArray[i]);
         grid.appendChild(square);
         squares.push(square);
       }
