@@ -62,19 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         click(square);
       });
 
-      // //cntrl and left click
-      // square.oncontextmenu = function(e) {
-      //   e.preventDefault();
-      //   addFlag(square);
-      // };
     }
-
-
-
-
-
-
-
 
     // Annotating each square with the number of adjacent mines.
     for (let i = 0; i < squares.length; i++) {
@@ -118,14 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Game over alert
   // var gameOver = function() { alert('Game over!');};
-
-  
-  
   // for (let i = 0; i < squares.length; i++) {
   //   let currentID = squares[i].id;
-   
   //   if (squares[i].classList.contains('checked') || squares[i].classList.contains('flag')) return;
-
   //   // Clicking on a mine gives the game over alert
   //   if (squares[i].classList.contains('mine')) {
   //     squares[i].addEventListener('click', gameOver, false);
