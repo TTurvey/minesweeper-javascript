@@ -17,9 +17,15 @@
 
 .mine {
   background-color: red;
-
 }
 
 .not-a-mine {
   background-color: blue;
 }
+
+.grid div[data] {
+  color: yellow;
+  font-size: 10px;
+
+}
+

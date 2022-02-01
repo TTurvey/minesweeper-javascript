@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const topRow = (i < width);
       const bottomRow = (i > (squaresAmount - 1 - width));
 
-      
       if (squares[i].classList.contains('not-a-mine')) { 
         // top-left diagonal of the current square (every square but the far left side and top row).
         if (!farLeftColumn && !topRow && squares[i - width - 1].classList.contains('mine')) total ++;
@@ -97,6 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   createBoard();
-  
-});
 
+  // Click square and if mine then show game over alert.
+  var elements = document.getElementsByClassName("mine");
+  var gameOver = function() { alert('Game over!');};
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', gameOver, false);
+  }
+
+  
+
+
+
+});
