@@ -132,13 +132,77 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Game over');
     } else {
       let total = square.getAttribute('data');
-      square.classList.add('checked');
-      square.innerHTML = total;
-      return;
+      if (total !=0) {
+        square.classList.add('checked');
+        square.innerHTML = total;
+        return;
       }
       checkSquare(square, currentId);
-    
+    }
     square.classList.add('checked');
   }
   
+  //check neighboring squares once square is clicked
+  function checkSquare(square, currentId) {
+    const farLeftColumn = (currentId % width === 0);
+    const farRightColumn = (currentId % width === width -1);
+    const topRow = (currentId < width);
+    const bottomRow = (currentId > (squaresAmount - 1 - width));
+
+    // The recursion needs to happen after the click has occurred so setTimeout has been used at 10ms to delay this function.
+    setTimeout(() => {
+      // Check the square that is the top-left diagonal
+      if (!farLeftColumn && !topRow) {
+        const newId = squares[parseInt(currentId) - width - 1].id;
+        const newSquare = document.getElementById(newId);
+        click(newSquare);
+      }
+      // Check the square that is above
+      if (!topRow) {
+        const newId = squares[parseInt(currentId -width)].id;
+        const newSquare = document.getElementById(newId);
+        click(newSquare);
+      }
+      // Check the square that is the top-right diagonal
+      if (!farRightColumn && !topRow) {
+        const newId = squares[parseInt(currentId) +1 -width].id;
+        const newSquare = document.getElementById(newId);
+        click(newSquare);
+      }
+      // Check the square to the left
+      if (!farLeftColumn) {
+        const newId = squares[parseInt(currentId) -1].id;
+        const newSquare = document.getElementById(newId);
+        click(newSquare);
+      }
+      // Check the square to the right
+      if (!farRightColumn) {
+        const newId = squares[parseInt(currentId) +1].id;
+        const newSquare = document.getElementById(newId);
+        click(newSquare);
+      }
+      // Check the square that is the bottom-left diagonal
+      if (!farLeftColumn && !bottomRow) {
+        const newId = squares[parseInt(currentId) -1 +width].id;
+        const newSquare = document.getElementById(newId);
+        click(newSquare);
+      }
+      // Check the square that is below
+      if (!bottomRow) {
+        const newId = squares[parseInt(currentId) +width].id;
+        const newSquare = document.getElementById(newId);
+        click(newSquare);
+      }
+      // Check the square that is the bottom-right diagonal
+      if (!farRightColumn && !bottomRow) {
+        const newId = squares[parseInt(currentId) +1 +width].id;
+        const newSquare = document.getElementById(newId);
+        click(newSquare);
+      }
+      // Set delay to 10 milliseconds
+    }, 5);
+  }
+
+
+
 });
