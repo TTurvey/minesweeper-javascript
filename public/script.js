@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let squaresAmount = length * width;
   let squares = [];
   let mines = 10;
+  let gameOver = false;
   
   // Creates the game board.
   function createBoard() {
@@ -55,7 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
       square.classList.add(shuffledArray[i]);
       grid.appendChild(square);
       squares.push(square);
+    
+      //normal click
+      square.addEventListener('click', function(e) {
+        click(square);
+      });
+
+      // //cntrl and left click
+      // square.oncontextmenu = function(e) {
+      //   e.preventDefault();
+      //   addFlag(square);
+      // };
     }
+
+
+
+
+
+
+
 
     // Annotating each square with the number of adjacent mines.
     for (let i = 0; i < squares.length; i++) {
@@ -96,16 +115,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   createBoard();
-
-  // Click square and if mine then show game over alert.
-  var elements = document.getElementsByClassName("mine");
-  var gameOver = function() { alert('Game over!');};
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].addEventListener('click', gameOver, false);
-  }
+  
+  // Game over alert
+  // var gameOver = function() { alert('Game over!');};
 
   
+  
+  // for (let i = 0; i < squares.length; i++) {
+  //   let currentID = squares[i].id;
+   
+  //   if (squares[i].classList.contains('checked') || squares[i].classList.contains('flag')) return;
 
+  //   // Clicking on a mine gives the game over alert
+  //   if (squares[i].classList.contains('mine')) {
+  //     squares[i].addEventListener('click', gameOver, false);
+  //   } else {
+  //     // Clicking on a square that isn't a mine makes the square attribute
+  //     let total = squares[i].getAttribute('data');
+  //     squares[i].classList.add('checked');
+  //     squares[i].innerHTML= total;
+  //     return;
+  //   }
+  //   checkSquare(squares[i], currentID)
+  //   squares[i].classListadd('checked')
+  // }
 
-
+  //click on square actions
+  function click(square) {
+    let currentId = square.id;
+    if (gameOver) return;
+    if (square.classList.contains('checked') || square.classList.contains('flag')) return;
+    if (square.classList.contains('mine')) {
+      alert('Game over');
+    } else {
+      let total = square.getAttribute('data');
+      square.classList.add('checked');
+      square.innerHTML = total;
+      return;
+      }
+      checkSquare(square, currentId);
+    
+    square.classList.add('checked');
+  }
+  
 });
