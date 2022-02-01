@@ -200,9 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
         click(newSquare);
       }
       // Set delay to 10 milliseconds
-    }, 5);
+    }, 10);
   }
-
-
-
 });
