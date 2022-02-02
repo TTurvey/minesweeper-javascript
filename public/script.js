@@ -1,29 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid');
+  const flagsLeft = document.querySelector('#flags-left');
+  const result = document.querySelector('#result');
   let length = 10;
   let width = 10;
+  let flags = 0;
+  let mines = 10;
   let squaresAmount = length * width;
   let squares = [];
-  let mines = 10;
-  let gameOver = false;
-  
+  let isGameOver = false;
+
   // Creates the game board.
   function createBoard() {
+    // flagsLeft.innerHTML = mines;
   
     // Putting mines on the board.
     // Making an array the size of the amount of mines on the board.
     // Fills each array index with a string 'mine'.
     const mineArray = Array(mines).fill('mine');
-    console.log(mineArray);
 
     // Making an array the size of the amount of empty squares on the board.
     // Fills each array index with a string 'not a mine'.
     const emptyArray = Array(squaresAmount - mines).fill('not-a-mine');
-    console.log(emptyArray);
 
     // Joining the mine and empty arrays.
     const boardArray = mineArray.concat(emptyArray);
-    console.log(boardArray);
       
     // Delaring a new variable for the pre-shuffled array otherwise the game setup 
     // with number of mines etc wouldn't be taken into account in subsequent games.
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(shuffledArray);
     
     // For each array index, create divs with classes
-    for (let i=0 ; i < length * width; i++) {
+    for (let i = 0 ; i < length * width; i++) {
       const square = document.createElement('div');
       square.setAttribute('id', i);
       square.classList.add(shuffledArray[i]);
@@ -58,9 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
       squares.push(square);
     
       //normal click
-      square.addEventListener('click', function(e) {
+      square.addEventListener('click', function(event) {
         click(square);
       });
+
+      //cntrl and left click
+      square.oncontextmenu = function(event) {
+        event.preventDefault();
+        addFlag(square);
+      };
 
     }
 
@@ -103,33 +110,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   createBoard();
-  
-  // Game over alert
-  // var gameOver = function() { alert('Game over!');};
-  // for (let i = 0; i < squares.length; i++) {
-  //   let currentID = squares[i].id;
-  //   if (squares[i].classList.contains('checked') || squares[i].classList.contains('flag')) return;
-  //   // Clicking on a mine gives the game over alert
-  //   if (squares[i].classList.contains('mine')) {
-  //     squares[i].addEventListener('click', gameOver, false);
-  //   } else {
-  //     // Clicking on a square that isn't a mine makes the square attribute
-  //     let total = squares[i].getAttribute('data');
-  //     squares[i].classList.add('checked');
-  //     squares[i].innerHTML= total;
-  //     return;
-  //   }
-  //   checkSquare(squares[i], currentID)
-  //   squares[i].classListadd('checked')
-  // }
+
+  //Right click adds a flag to the square
+  function addFlag(square) {
+    if (isGameOver) return;
+    if (!square.classList.contains('checked') && (flags < mines)) {
+      if (!square.classList.contains('flag')) {
+        square.classList.add('flag');
+        square.innerHTML = 'FLAG';
+        flags ++;
+      } else {
+        square.classList.remove('flag');
+        square.innerHTML = '';
+        flags --;
+      }
+    }
+  }
 
   //click on square actions
   function click(square) {
     let currentId = square.id;
-    if (gameOver) return;
+    if (isGameOver) return;
     if (square.classList.contains('checked') || square.classList.contains('flag')) return;
     if (square.classList.contains('mine')) {
-      alert('Game over');
+      gameOver(square);
     } else {
       let total = square.getAttribute('data');
       if (total !=0) {
@@ -202,4 +206,19 @@ document.addEventListener('DOMContentLoaded', () => {
       // Set delay to 10 milliseconds
     }, 10);
   }
+
+  //game over
+  function gameOver(square) {
+    isGameOver = true;
+    alert('GAME OVER');
+
+    //show ALL the mines
+    squares.forEach(square => {
+      if (square.classList.contains('mine')) {
+        square.innerHTML = 'MINE';
+      }
+    });
+    
+  }
+
 });
