@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid');
-  const flagsLeft = document.querySelector('#flags-left');
-  const result = document.querySelector('#result');
   let length = 10;
   let width = 10;
   let flags = 0;
@@ -12,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Creates the game board.
   function createBoard() {
-    // flagsLeft.innerHTML = mines;
   
     // Putting mines on the board.
     // Making an array the size of the amount of mines on the board.
@@ -119,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         square.classList.add('flag');
         square.innerHTML = 'FLAG';
         flags ++;
+        checkWin();
       } else {
         square.classList.remove('flag');
         square.innerHTML = '';
@@ -218,7 +216,21 @@ document.addEventListener('DOMContentLoaded', () => {
         square.innerHTML = 'MINE';
       }
     });
-    
   }
 
+  // Win
+  function checkWin() {
+    let correctFlagAmount = 0;
+    for (let i = 0; i < squares.length; i++) {
+      if (squares[i].classList.contains('flag') && squares[i].classList.contains('mine')) {
+        correctFlagAmount ++;
+      }
+      if (correctFlagAmount === mines) {
+        alert('YOU WIN!');
+        isGameOver = true;
+        console.log('you wiiiiiin');
+        return
+      }
+    }
+  }
 });
