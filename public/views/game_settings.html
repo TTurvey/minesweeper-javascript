@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../stylesheets/layout.css">
+    <link rel="stylesheet" href="../stylesheets/form.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script defer src="../game_settings_script.js" type="module"></script>
+    <title>Minesweeper</title>
+  </head>
+
+  <body>
+
+    <div class="form-card" >
+      <form id="settings-input-form" action="/game" method="GET">
+        <div class="banner">
+          <h1>Minesweeper</h1>
+        </div>
+        <br/>
+        <fieldset>
+          <legend>Game Settings</legend>
+          <div class="question">
+            <label>Difficulty Level</label>
+            <div class="question-answer">
+              <div>
+                <input type="radio" value="Easy" id="radio_1" name="difficulty"/>
+                <label for="radio_1" class="radio"><span>Easy</span></label>
+              </div>
+              <div>
+                <input type="radio" value="Medium" id="radio_2" name="difficulty"/>
+                <label for="radio_2" class="radio"><span>Medium</span></label>
+              </div>
+              <div>
+                <input type="radio" value="Hard" id="radio_3" name="difficulty"/>
+                <label for="radio_3" class="radio"><span>Hard</span></label>
+              </div>
+              <div>
+                <input type="radio" value="Extra Hard" id="radio_4" name="difficulty"/>
+                <label for="radio_4" class="radio"><span>Extra Hard</span></label>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="question">
+            <label>Game Size</label>
+            <div class="question-answer">
+              <div>
+                <input type="radio" value="10" id="radio_5" name="grid-width"/>
+                <label for="radio_5" class="radio"><span>10</span></label>
+              </div>
+              <div>
+                <input  type="radio" value="20" id="radio_6" name="grid-width"/>
+                <label for="radio_6" class="radio"><span>20</span></label>
+              </div>
+              <div>
+                <input  type="radio" value="30" id="radio_7" name="grid-width"/>
+                <label for="radio_7" class="radio"><span>30</span></label>
+              </div>
+              <div>
+                <input  type="radio" value="40" id="radio_8" name="grid-width"/>
+                <label for="radio_8" class="radio"><span>40</span></label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="btn-block">
+          <button type="submit" href="/game">Submit</button>
+        </div>
+      </form>
+    </div>
+    
+  </body>
+
+</html>

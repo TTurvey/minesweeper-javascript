@@ -1,23 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
+  let inputDifficulty = sessionStorage.getItem('inputDifficulty');
+  let inputWidth = JSON.parse(sessionStorage.getItem('inputWidth'));
+
   const grid = document.querySelector('.grid');
-  let length = 10;
-  let width = 10;
+  const height = 10;
+  let width = inputWidth;
+  let squaresAmount = height * width;
+  
+  let mines = squaresAmount/10;
   let flags = 0;
-  let mines = 10;
-  let squaresAmount = length * width;
   let squares = [];
   let isGameOver = false;
+  
+  
+  console.log(inputWidth);
+  console.log(inputDifficulty);
 
   // Creates the game board.
   function createBoard() {
   
     // Putting mines on the board.
-    // Making an array the size of the amount of mines on the board.
-    // Fills each array index with a string 'mine'.
+    // Making an array the size of the amount of mines on the board. Fills each array index with a string 'mine'.
     const mineArray = Array(mines).fill('mine');
 
-    // Making an array the size of the amount of empty squares on the board.
-    // Fills each array index with a string 'not a mine'.
+    // Making an array the size of the amount of empty squares on the board. Fills each array index with a string 'not a mine'.
     const emptyArray = Array(squaresAmount - mines).fill('not-a-mine');
 
     // Joining the mine and empty arrays.
@@ -48,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(shuffledArray);
     
     // For each array index, create divs with classes
-    for (let i = 0 ; i < length * width; i++) {
+    for (let i = 0 ; i < squaresAmount; i++) {
       const square = document.createElement('div');
       square.setAttribute('id', i);
       square.classList.add(shuffledArray[i]);
@@ -65,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         addFlag(square);
       };
-
     }
 
     // Annotating each square with the number of adjacent mines.
@@ -114,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!square.classList.contains('checked') && (flags < mines)) {
       if (!square.classList.contains('flag')) {
         square.classList.add('flag');
-        square.innerHTML = 'FLAG';
+        square.innerHTML = '🚩';
         flags ++;
         checkWin();
       } else {
@@ -213,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //show ALL the mines
     squares.forEach(square => {
       if (square.classList.contains('mine')) {
-        square.innerHTML = 'MINE';
+        square.innerHTML = '💣';
       }
     });
   }
