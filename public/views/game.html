@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./stylesheets/layout.css">
     <link rel="stylesheet" href="./stylesheets/grid.css">
+    <link rel="stylesheet" href="../stylesheets/form.css">
     <script defer src="/game_script.js" type="module"></script>
     <title>Minesweeper</title>
   </head>
@@ -17,7 +18,7 @@
     </div>
 
     <div class="layout-middle-pane">
-      <div class="grid"></div>
+      <div class="grid" name="grid"></div>
     </div>
     
     <div class="layout-bottom-pane">
@@ -29,6 +30,13 @@
       Games won: ...
       Games lost: ... 
       Stats click here ...
+
+      <form id="settings" class="button" action="/game/settings" method="GET">
+        <div class="btn-block">
+          <button type="submit" href="/game/settings">Settings</button>
+        </div>
+      </form>
+
     </div>
 
   </body>

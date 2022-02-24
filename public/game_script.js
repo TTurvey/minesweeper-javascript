@@ -1,21 +1,70 @@
 document.addEventListener('DOMContentLoaded', () => {
-  let inputDifficulty = sessionStorage.getItem('inputDifficulty');
-  let inputWidth = JSON.parse(sessionStorage.getItem('inputWidth'));
-
   const grid = document.querySelector('.grid');
-  const height = 10;
-  let width = inputWidth;
+
+  // Default settings
+  let height = 10;
+  let width = 10;
+  let difficulty = "Easy";
   let squaresAmount = height * width;
-  
-  let mines = squaresAmount/10;
-  let flags = 0;
   let squares = [];
   let isGameOver = false;
-  
-  
-  console.log(inputWidth);
-  console.log(inputDifficulty);
+  let flags = 0;
 
+  // Gets the user selected settings from session storage.
+  let inputGameSize = JSON.parse(sessionStorage.getItem('inputGameSize'));
+  let inputDifficulty = JSON.parse(sessionStorage.getItem('inputDifficulty'));
+
+  // Sets the game size to the size the user selected. Variables and CSS elements changed.
+  function setGameSize() {
+    if (inputGameSize == "Tiny") {
+      // height = 10;
+      // width = 10;
+      // grid.style.height = "300px";
+      // grid.style.width = "300px";
+    } else if (inputGameSize == "Small") {
+      height = 15;
+      width = 10;
+      grid.style.height = "450px";
+      grid.style.width = "300px";
+    } else if (inputGameSize == "Medium") {
+      height = 15;
+      width = 20;
+      grid.style.height = "450px";
+      grid.style.width = "600px";
+    } else if (inputGameSize == "Large") {
+      height = 15;
+      width = 30;
+      grid.style.height = "450px";
+      grid.style.width = "900px";
+    } else if (inputGameSize == "Extra Large") {
+      height = 15;
+      width = 45;
+      grid.style.height = "450px";
+      grid.style.width = "1350px";
+    }
+  }
+  setGameSize();
+
+  squaresAmount = height * width;
+  let mines = squaresAmount * 0.1;
+
+  // Sets the game difficulty to the user inputted difficulty.
+  function setGameDifficulty() {
+    if (inputDifficulty == "Easy") {
+      mines = squaresAmount * 0.1;
+    } else if (inputDifficulty == "Medium") {
+      difficulty = "Medium";
+      mines = squaresAmount * 0.2;
+    } else if (inputDifficulty == "Hard") {
+      difficulty = "Hard";
+      mines = squaresAmount * 0.3;
+    } else if (inputDifficulty == "Extra Hard") {
+      difficulty = "Extra Hard";
+      mines = squaresAmount * 0.4;
+    }
+  }
+  setGameDifficulty();
+  
   // Creates the game board.
   function createBoard() {
   

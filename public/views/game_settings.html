@@ -5,15 +5,20 @@
     <link rel="stylesheet" href="../stylesheets/layout.css">
     <link rel="stylesheet" href="../stylesheets/form.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
     <script defer src="../game_settings_script.js" type="module"></script>
     <title>Minesweeper</title>
   </head>
 
   <body>
+    <div class="layout-top-pane">
+      <div class="title">
+        minesweeper
+      </div>
+    </div>
 
     <div class="form-card" >
-      <form id="settings-input-form" action="/game" method="GET">
+      <form id="settings-input-form" class="settings-input-form" action="/game" method="GET">
         <div class="banner">
           <h1>Minesweeper</h1>
         </div>
@@ -46,21 +51,28 @@
             <label>Game Size</label>
             <div class="question-answer">
               <div>
-                <input type="radio" value="10" id="radio_5" name="grid-width"/>
-                <label for="radio_5" class="radio"><span>10</span></label>
+                <input type="radio" value="Tiny" id="radio_5" name="game-size"/>
+                <label for="radio_5" class="radio"><span>Tiny (10 x 10 = 100 squares)</span></label>
               </div>
               <div>
-                <input  type="radio" value="20" id="radio_6" name="grid-width"/>
-                <label for="radio_6" class="radio"><span>20</span></label>
+                <input  type="radio" value="Small" id="radio_6" name="game-size"/>
+                <label for="radio_6" class="radio"><span>Small (15 x 10 = 150 squares)</span></label>
               </div>
               <div>
-                <input  type="radio" value="30" id="radio_7" name="grid-width"/>
-                <label for="radio_7" class="radio"><span>30</span></label>
+                <input  type="radio" value="Medium" id="radio_7" name="game-size"/>
+                <label for="radio_7" class="radio"><span>Medium (15 x 20 = 300 squares)</span></label>
               </div>
               <div>
-                <input  type="radio" value="40" id="radio_8" name="grid-width"/>
-                <label for="radio_8" class="radio"><span>40</span></label>
+                <input  type="radio" value="Large" id="radio_8" name="game-size"/>
+                <label for="radio_8" class="radio"><span>Large (15 x 30 = 450 squares)</span></label>
               </div>
+              <div>
+                <input  type="radio" value="Extra Large" id="radio_8" name="game-size"/>
+                <label for="radio_8" class="radio"><span>Extra Large (15 x 45 = 525 squares)</span></label>
+              </div>
+
+
+
             </div>
           </div>
         </fieldset>
@@ -68,6 +80,28 @@
           <button type="submit" href="/game">Submit</button>
         </div>
       </form>
+    </div>
+
+    <div class="layout-middle-pane">
+      <div class="grid" name="grid"></div>
+    </div>
+    
+    <div class="layout-bottom-pane">
+
+      Mines: ...
+      Flags remaining: ...
+
+    
+      Games won: ...
+      Games lost: ... 
+      Stats click here ...
+
+      <form id="settings" class="button" action="/game/settings" method="GET">
+        <div class="btn-block">
+          <button type="submit" href="/game/settings">Settings</button>
+        </div>
+      </form>
+
     </div>
     
   </body>

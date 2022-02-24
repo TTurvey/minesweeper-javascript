@@ -13,15 +13,15 @@ body, html {
 
 .layout-middle-pane {
   width: 100%;
-  height: 408px;
+  height: 458px;
   background-color: white;
 }
 
 .layout-bottom-pane {
   width: 100%;
-  height: 250px;
+  height: 230px;
   display: flex;
-  background-color: #669999;
+  background-color: #fdffff;
   border: black 5px solid;
   box-sizing: border-box;
 }
