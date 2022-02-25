@@ -9,8 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let inputGameSize = document.querySelector('input[name="game-size"]:checked').value;
     sessionStorage.setItem('inputGameSize', JSON.stringify(inputGameSize));
     sessionStorage.setItem('inputDifficulty', JSON.stringify(inputDifficulty));
-    console.log(inputWidth);
+    console.log(inputGameSize);
     console.log(inputDifficulty);
+
+    let inputStyleMode = document.querySelector('input[name="style-mode"]:checked').value;
+    sessionStorage.setItem('inputStyleMode', JSON.stringify(inputStyleMode));
+    console.log(inputStyleMode);
   });
   
 });

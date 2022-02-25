@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Gets the user selected settings from session storage.
   let inputGameSize = JSON.parse(sessionStorage.getItem('inputGameSize'));
   let inputDifficulty = JSON.parse(sessionStorage.getItem('inputDifficulty'));
+  let inputStyleMode = JSON.parse(sessionStorage.getItem('inputStyleMode'));
 
   // Sets the game size to the size the user selected. Variables and CSS elements changed.
   function setGameSize() {
@@ -64,7 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   setGameDifficulty();
-  
+
+  function setGameStyleMode() {
+    const layoutMiddlePane = document.querySelector('.layout-middle-pane');
+    if (inputStyleMode == "Light mode") {
+      layoutMiddlePane.style.backgroundImage = "url('../images/sand-light-mode.jpg');";
+    } else if (inputStyleMode == "Dark mode") {
+      layoutMiddlePane.style.backgroundImage = "url('../images/sand-dark-mode.jpg')";
+  }}
+  setGameStyleMode();
+
   // Creates the game board.
   function createBoard() {
   
