@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../stylesheets/layout.css">
     <link rel="stylesheet" href="../stylesheets/form.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../stylesheets/game-stats.css">
+    <script src="https://kit.fontawesome.com/88dd323ed6.js" crossorigin="anonymous"></script>
     <script defer src="../game_settings_script.js" type="module"></script>
     <title>Minesweeper</title>
   </head>
@@ -13,42 +13,42 @@
   <body>
     <div class="layout-top-pane">
       <div class="title">
-        minesweeper
+        <h1>Minesweeper</h1>
       </div>
     </div>
 
     <div class="form-card" >
       <form id="settings-input-form" class="settings-input-form" action="/game" method="GET">
         <div class="banner">
-          <h1>Minesweeper</h1>
+          <h1>Game Settings</h1>
         </div>
         <br/>
         <fieldset>
-          <legend>Game Settings</legend>
+          <legend>Difficulty Level</legend>
           <div class="question">
-            <label>Difficulty Level</label>
             <div class="question-answer">
               <div>
                 <input type="radio" value="Easy" id="radio_1" name="difficulty"/>
-                <label for="radio_1" class="radio"><span>Easy</span></label>
+                <label for="radio_1" class="radio"><span>Easy (10% mines)</span></label>
               </div>
               <div>
                 <input type="radio" value="Medium" id="radio_2" name="difficulty"/>
-                <label for="radio_2" class="radio"><span>Medium</span></label>
+                <label for="radio_2" class="radio"><span>Medium (20% mines)</span></label>
               </div>
               <div>
                 <input type="radio" value="Hard" id="radio_3" name="difficulty"/>
-                <label for="radio_3" class="radio"><span>Hard</span></label>
+                <label for="radio_3" class="radio"><span>Hard (30% mines)</span></label>
               </div>
               <div>
                 <input type="radio" value="Extra Hard" id="radio_4" name="difficulty"/>
-                <label for="radio_4" class="radio"><span>Extra Hard</span></label>
+                <label for="radio_4" class="radio"><span>Extra Hard (40% mines)</span></label>
               </div>
             </div>
           </div>
-          <br/>
+        </fieldset>
+        <fieldset>
+          <legend>Game Size</legend>
           <div class="question">
-            <label>Game Size</label>
             <div class="question-answer">
               <div>
                 <input type="radio" value="Tiny" id="radio_5" name="game-size"/>
@@ -70,12 +70,10 @@
                 <input  type="radio" value="Extra Large" id="radio_8" name="game-size"/>
                 <label for="radio_8" class="radio"><span>Extra Large (15 x 45 = 525 squares)</span></label>
               </div>
-
-
-
             </div>
           </div>
         </fieldset>
+
         <div class="btn-block">
           <button type="submit" href="/game">Submit</button>
         </div>
@@ -88,14 +86,25 @@
     
     <div class="layout-bottom-pane">
 
-      Mines: ...
-      Flags remaining: ...
+      <div class="game-stats-container">
+        <fieldset>
+          <div class="game-stats-text">
+            
+            <h3>Game Statistics</h3>
+            
+            <p id="number-of-mines">Mines: </p>
+          
+            <p id="number-of-flags-used">Flags used: </p>
+            <p id="number-of-flags-remaining">Flags remaining: </p>
+            <!-- <p id="games-won">Games won: </p>
+            <p id="games-lost">Games lost: </p>
+            <p id="win-percentage">Win Percentage: </p> --> 
+          </div>
 
-    
-      Games won: ...
-      Games lost: ... 
-      Stats click here ...
-
+        </fieldset>
+        
+      </div>
+      
       <form id="settings" class="button" action="/game/settings" method="GET">
         <div class="btn-block">
           <button type="submit" href="/game/settings">Settings</button>

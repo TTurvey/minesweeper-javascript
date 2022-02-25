@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let squaresAmount = height * width;
   let squares = [];
   let isGameOver = false;
-  let flags = 0;
+  let flagsUsed = 0;
 
   // Gets the user selected settings from session storage.
   let inputGameSize = JSON.parse(sessionStorage.getItem('inputGameSize'));
@@ -64,6 +64,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   setGameDifficulty();
+
+  function startGameStats() {
+    const minesStatEl = document.getElementById('number-of-mines');
+    const minesStatString = document.createTextNode(`${mines}`);
+    minesStatEl.appendChild(minesStatString);
+
+    const flagsUsedStatEl = document.getElementById('number-of-flags-used');
+    const flagsUsedStatString = document.createTextNode(`${flagsUsed}`);
+    flagsUsedStatEl.appendChild(flagsUsedStatString);
+
+    const flagsRemainingStatEl = document.getElementById('number-of-flags-remaining');
+    const flagsRemainingStatString = document.createTextNode(`${mines}`);
+    flagsRemainingStatEl.appendChild(flagsRemainingStatString);
+
+  }
+  startGameStats();
+
+
+
+
+
+
+
+
   
   // Creates the game board.
   function createBoard() {
@@ -165,18 +189,28 @@ document.addEventListener('DOMContentLoaded', () => {
   //Right click adds a flag to the square
   function addFlag(square) {
     if (isGameOver) return;
-    if (!square.classList.contains('checked') && (flags < mines)) {
+    if (!square.classList.contains('checked') && (flagsUsed < mines)) {
       if (!square.classList.contains('flag')) {
         square.classList.add('flag');
         square.innerHTML = '🚩';
-        flags ++;
+        flagsUsed ++;
         checkWin();
       } else {
         square.classList.remove('flag');
         square.innerHTML = '';
-        flags --;
+        flagsUsed --;
       }
     }
+    changeFlagStat();
+  }
+
+  // Updates the statistics for the present game state for the flags used and remaining.
+  function changeFlagStat() {
+    const flagsUsedStatEl = document.getElementById('number-of-flags-used');
+    flagsUsedStatEl.innerText = `Flags used: ${flagsUsed}`;
+  
+    const flagsRemainingStatEl = document.getElementById('number-of-flags-remaining');
+    flagsRemainingStatEl.innerText = `Flags remaining: ${mines - flagsUsed}`;
   }
 
   //click on square actions
@@ -280,10 +314,10 @@ document.addEventListener('DOMContentLoaded', () => {
         correctFlagAmount ++;
       }
       if (correctFlagAmount === mines) {
-        alert('YOU WIN!');
+        alert('YOU WIN');
         isGameOver = true;
         console.log('you wiiiiiin');
-        return
+        return;
       }
     }
   }

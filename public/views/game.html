@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="./stylesheets/layout.css">
     <link rel="stylesheet" href="./stylesheets/grid.css">
     <link rel="stylesheet" href="../stylesheets/form.css">
+    <link rel="stylesheet" href="../stylesheets/game-stats.css">
     <script defer src="/game_script.js" type="module"></script>
     <title>Minesweeper</title>
   </head>
@@ -13,7 +14,7 @@
 
     <div class="layout-top-pane">
       <div class="title">
-        minesweeper
+        <h1>Minesweeper</h1>
       </div>
     </div>
 
@@ -23,14 +24,25 @@
     
     <div class="layout-bottom-pane">
 
-      Mines: ...
-      Flags remaining: ...
+      <div class="game-stats-container">
+        <fieldset>
+          <div class="game-stats-text">
+            
+            <h3>Game Statistics</h3>
+            
+            <p id="number-of-mines">Mines: </p>
+          
+            <p id="number-of-flags-used">Flags used: </p>
+            <p id="number-of-flags-remaining">Flags remaining: </p>
+            <!-- <p id="games-won">Games won: </p>
+            <p id="games-lost">Games lost: </p>
+            <p id="win-percentage">Win Percentage: </p> --> 
+          </div>
 
-    
-      Games won: ...
-      Games lost: ... 
-      Stats click here ...
-
+        </fieldset>
+        
+      </div>
+      
       <form id="settings" class="button" action="/game/settings" method="GET">
         <div class="btn-block">
           <button type="submit" href="/game/settings">Settings</button>
