@@ -51,7 +51,8 @@ padding: 5px;
 .banner {
 position: relative;
 height: 100px;
-background-color: #669999 ;
+background-image: url('../images/gears-pavel-neznanov-unsplash.jpg');
+background-repeat: no-repeat;
 background-size: cover;
 display: flex;
 justify-content: center;
