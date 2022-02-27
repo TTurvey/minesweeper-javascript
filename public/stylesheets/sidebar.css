@@ -1,0 +1,123 @@
+.sidebar-text-container { 
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 2px;
+
+}
+
+legend {
+  background-color: rgb(201, 99, 99) ;
+  color: #fff;
+  padding: 4px 10px;
+}
+
+fieldset {
+
+  margin-top: 10px;
+}
+
+.sidebar-heading { 
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 5px;
+  color: black;
+}
+
+.sidebar-text {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 8px;
+  color: black;
+}
+
+.sidebar-radio-text {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  color: black;
+}
+
+/* input, select, textarea {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  } */
+
+.item:hover p, label:hover {
+  color:  rgb(201, 99, 99);
+}
+  
+.item {
+  position: relative;
+  margin: 10px 0;
+}
+
+input[type=radio], input[type=checkbox]  {
+  display: none;
+}
+
+label.radio {
+  position: relative;
+  display: inline-block;
+  margin: 5px 20px 1px 0;
+  cursor: pointer;
+}
+
+.question span {
+  margin-left: 30px;
+}
+  
+.question-answer label {
+  display: block;
+}
+
+label.radio:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 2px solid rgb(201, 99, 99);
+}
+
+input[type=radio]:checked + label:before, label.radio:hover:before {
+  border: 2px solid  rgb(201, 99, 99);
+}
+
+label.radio:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  width: 8px;
+  height: 4px;
+  border: 3px solid  rgb(201, 99, 99);
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  opacity: 0;
+}
+  
+input[type=radio]:checked + label:after {
+  opacity: 1;
+}
+
+.btn-block {
+  margin-top: 10px;
+  text-align: center;
+}
+
+button {
+  width: 150px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px; 
+  background:  rgb(201, 99, 99);
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+      
+    

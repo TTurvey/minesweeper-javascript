@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./stylesheets/layout.css">
     <link rel="stylesheet" href="./stylesheets/grid.css">
-    <link rel="stylesheet" href="../stylesheets/form.css">
-    <link rel="stylesheet" href="../stylesheets/game-stats.css">
+    <link rel="stylesheet" href="../stylesheets/sidebar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Monofett&family=Roboto:wght@500&display=swap" rel="stylesheet">
     <script defer src="/game_script.js" type="module"></script>
+    <script defer src="../game_settings_script.js" type="module"></script>
     <title>Minesweeper</title>
   </head>
 
@@ -14,44 +15,105 @@
 
     <div class="layout-top-pane">
       <div class="title">
-        <h1>Minesweeper</h1>
+        Minesweeper
       </div>
     </div>
 
     <div class="layout-middle-pane">
-      <div class="grid" name="grid"></div>
+      <div class="layout-middle-pane-left-box">
+        <div class="sidebar-text-container">
+          <fieldset>
+            <legend>Game Statistics</legend>
+            <p id="number-of-mines" class="sidebar-text">Mines: </p> 
+            <p id="number-of-flags-used" class="sidebar-text">Flags used: </p>
+            <p id="number-of-flags-remaining" class="sidebar-text">Flags remaining: </p>
+            <p id="games-won" class="sidebar-text">Games won: </p>
+            <p id="games-lost" class="sidebar-text">Games lost: </p>
+            <p id="win-percentage" class="sidebar-text">Win Percentage: </p> 
+          </fieldset>
+        </div>
+
+        <div class="sidebar-text-container">
+          <div class="sidebar-radio-text">
+            <form id="settings-input-form" action="/game" method="GET">
+              <fieldset>
+                <legend>Game Settings</legend>
+                <p class="sidebar-heading"> Difficulty Level</p>
+                <div class="question">
+                  <div class="question-answer">
+                    <div>
+                      <input type="radio" value="Easy" id="radio_1" name="difficulty"/>
+                      <label for="radio_1" class="radio"><span>Easy (10% mines)</span></label>
+                    </div>
+                    <div>
+                      <input type="radio" value="Medium" id="radio_2" name="difficulty"/>
+                      <label for="radio_2" class="radio"><span>Medium (12% mines)</span></label>
+                    </div>
+                    <div>
+                      <input type="radio" value="Hard" id="radio_3" name="difficulty"/>
+                      <label for="radio_3" class="radio"><span>Hard (15% mines)</span></label>
+                    </div>
+                    <div>
+                      <input type="radio" value="Extra Hard" id="radio_4" name="difficulty"/>
+                      <label for="radio_4" class="radio"><span>Extra Hard (18% mines)</span></label>
+                    </div>
+                  </div>
+                </div>
+              
+              
+                <p class="sidebar-heading"> Game Size</p>
+                <div class="question">
+                  <div class="question-answer">
+                    <div>
+                      <input  type="radio" value="Small" id="radio_5" name="game-size" required/>
+                      <label for="radio_5" class="radio"><span>Small (10 x 10 = 100 squares)</span></label>
+                    </div>
+                    <div>
+                      <input  type="radio" value="Medium" id="radio_6" name="game-size" required/>
+                      <label for="radio_6" class="radio"><span>Medium (15 x 15 = 225 squares)</span></label>
+                    </div>
+                    <div>
+                      <input  type="radio" value="Large" id="radio_7" name="game-size" required/>
+                      <label for="radio_7" class="radio"><span>Large (20 x 20 = 400 squares)</span></label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+      
+              <fieldset>
+                <legend>Theme</legend>
+                <div class="question">
+                  <div class="question-answer">
+                    <div>
+                      <input type="radio" value="Light mode" id="radio_9" name="style-mode" required/>
+                      <label for="radio_9" class="radio"><span>Light mode</span></label>
+                    </div>
+                    <div>
+                      <input type="radio" value="Dark mode" id="radio_10" name="style-mode" required/>
+                      <label for="radio_10" class="radio"><span>Dark mode</span></label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+      
+              <div class="btn-block">
+                <button type="submit" href="/game">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+
+      <div class="layout-middle-pane-right-box">
+        <div class="grid" name="grid"></div>
+      </div>
+      
     </div>
     
     <div class="layout-bottom-pane">
-
-      <div class="game-stats-container">
-        <fieldset>
-          <div class="game-stats-text">
-            
-            <h3>Game Statistics</h3>
-            
-            <p id="number-of-mines">Mines: </p>
-          
-            <p id="number-of-flags-used">Flags used: </p>
-            <p id="number-of-flags-remaining">Flags remaining: </p>
-            <!-- <p id="games-won">Games won: </p>
-            <p id="games-lost">Games lost: </p>
-            <p id="win-percentage">Win Percentage: </p> --> 
-          </div>
-
-        </fieldset>
-        
-      </div>
-      
-      <form id="settings" class="button" action="/game/settings" method="GET">
-        <div class="btn-block">
-          <button type="submit" href="/game/settings">Settings</button>
-        </div>
-      </form>
-
+      About  |  Github |  ...TBC
     </div>
 
   </body>
-
-
 </html>

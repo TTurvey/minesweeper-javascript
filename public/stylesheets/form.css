@@ -1,76 +1,22 @@
 html, body {
   min-height: 100%;
-  }
-
-.form-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 408px;
-  padding: 10px;
-  margin: 100px;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
 }
 
-body, div, form, input, select, textarea, label, p { 
+body, div, form, input, select, textarea, label { 
   padding: 0;
   margin: 0;
   outline: none;
   font-family: Roboto, Arial, sans-serif;
   font-size: 14px;
-  color: #666;
   line-height: 22px;
 }
 
-h1 {
-  position: absolute;
-  margin: 0;
-  font-size: 38px;
-  color: #fff;
-  z-index: 2;
-  line-height: 83px;
-}
-
-textarea {
-width: calc(100% - 12px);
-padding: 5px;
-}
-
-.settings-input-form {
-  width: 30%;
-  padding: 20px;
-  border-radius: 6px;
-  background: #fff;
-  box-shadow: 0 0 8px  #669999; 
-}
-
-.banner {
-position: relative;
-height: 100px;
-background-image: url('../images/gears-pavel-neznanov-unsplash.jpg');
-background-repeat: no-repeat;
-background-size: cover;
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-}
-.banner::after {
-content: "";
-background-color: rgba(0, 0, 0, 0.2); 
-position: absolute;
-width: 100%;
-height: 100%;
-}
 input, select, textarea {
 margin-bottom: 10px;
 border: 1px solid #ccc;
 border-radius: 3px;
 }
+
 input {
 width: calc(100% - 10px);
 padding: 5px;
@@ -80,8 +26,9 @@ textarea {
 width: calc(100% - 12px);
 padding: 5px;
 }
+
 .item:hover p, label:hover {
-color:  #669999;
+color:  rgb(201, 99, 99);
 }
 
 .item {
@@ -92,18 +39,22 @@ margin: 10px 0;
 input[type=radio], input[type=checkbox]  {
 display: none;
 }
+
 label.radio {
 position: relative;
 display: inline-block;
 margin: 5px 20px 1px 0;
 cursor: pointer;
 }
+
 .question span {
 margin-left: 30px;
 }
+
 .question-answer label {
 display: block;
 }
+
 label.radio:before {
 content: "";
 position: absolute;
@@ -113,9 +64,11 @@ height: 17px;
 border-radius: 50%;
 border: 2px solid #ccc;
 }
+
 input[type=radio]:checked + label:before, label.radio:hover:before {
-border: 2px solid  #669999;
+border: 2px solid  rgb(201, 99, 99);
 }
+
 label.radio:after {
 content: "";
 position: absolute;
@@ -123,12 +76,13 @@ top: 6px;
 left: 5px;
 width: 8px;
 height: 4px;
-border: 3px solid  #669999;
+border: 3px solid  rgb(201, 99, 99);
 border-top: none;
 border-right: none;
 transform: rotate(-45deg);
 opacity: 0;
 }
+
 input[type=radio]:checked + label:after {
 opacity: 1;
 }
@@ -143,7 +97,7 @@ width: 150px;
 padding: 10px;
 border: none;
 border-radius: 5px; 
-background:  #669999;
+background:  rgb(201, 99, 99);
 font-size: 16px;
 color: #fff;
 cursor: pointer;
@@ -154,9 +108,9 @@ button {
   padding: 10px;
   border: none;
   border-radius: 5px; 
-  background:  #669999;
+  background:  rgb(201, 99, 99);
   font-size: 16px;
   color: #fff;
   cursor: pointer;
-  }
+}
   

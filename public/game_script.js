@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid');
 
   // Default settings
-  let height = 10;
+  let height = 15;
   let width = 10;
   let difficulty = "Easy";
   let squaresAmount = height * width;
@@ -23,25 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
       // grid.style.height = "300px";
       // grid.style.width = "300px";
     } else if (inputGameSize == "Small") {
-      height = 15;
+      height = 10;
       width = 10;
-      grid.style.height = "450px";
+      grid.style.height = "300px";
       grid.style.width = "300px";
     } else if (inputGameSize == "Medium") {
       height = 15;
-      width = 20;
+      width = 15;
       grid.style.height = "450px";
-      grid.style.width = "600px";
+      grid.style.width = "450px";
     } else if (inputGameSize == "Large") {
-      height = 15;
-      width = 30;
-      grid.style.height = "450px";
-      grid.style.width = "900px";
-    } else if (inputGameSize == "Extra Large") {
-      height = 15;
-      width = 45;
-      grid.style.height = "450px";
-      grid.style.width = "1350px";
+      height = 20;
+      width = 20;
+      grid.style.height = "600px";
+      grid.style.width = "600px";
     }
   }
   setGameSize();
@@ -52,16 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Sets the game difficulty to the user inputted difficulty.
   function setGameDifficulty() {
     if (inputDifficulty == "Easy") {
-      mines = squaresAmount * 0.1;
+      mines = Math.round(squaresAmount * 0.1);
     } else if (inputDifficulty == "Medium") {
       difficulty = "Medium";
-      mines = squaresAmount * 0.2;
+      mines = Math.round(squaresAmount * 0.12);
     } else if (inputDifficulty == "Hard") {
       difficulty = "Hard";
-      mines = squaresAmount * 0.3;
+      mines = Math.round(squaresAmount * 0.15);
     } else if (inputDifficulty == "Extra Hard") {
       difficulty = "Extra Hard";
-      mines = squaresAmount * 0.4;
+      mines = Math.round(squaresAmount * 0.18);
     }
   }
   setGameDifficulty();
@@ -83,11 +78,29 @@ document.addEventListener('DOMContentLoaded', () => {
   startGameStats();
 
   function setGameStyleMode() {
-    const layoutMiddlePane = document.querySelector('.layout-middle-pane');
+    const layoutTopPane = document.querySelector('.layout-top-pane');
+    const layoutMiddlePaneLeftBox = document.querySelector('.layout-middle-pane-left-box');
+    const sideBarText = document.querySelectorAll('.sidebar-text');
+    const sideBarRadioText = document.querySelector('.sidebar-radio-text');
+    const layoutMiddlePaneRightBox = document.querySelector('.layout-middle-pane-right-box');
+    const layoutBottomPane = document.querySelector('.layout-bottom-pane');
+    
+  
     if (inputStyleMode == "Light mode") {
-      layoutMiddlePane.style.backgroundImage = "url('../images/sand-light-mode.jpg');";
+      layoutTopPane.style.background = "white";
+      layoutMiddlePaneLeftBox.style.backgroundImage = "url('../images/sand-light-mode.jpg');";
+      layoutBottomPane.style.background = "white";
     } else if (inputStyleMode == "Dark mode") {
-      layoutMiddlePane.style.backgroundImage = "url('../images/sand-dark-mode.jpg')";
+      layoutTopPane.style.background = "black";
+      layoutMiddlePaneLeftBox.style.background = "black";
+      sideBarText.forEach((item) => {
+        item.style.color = "white";
+      })
+      
+      
+      sideBarRadioText.style.color = "white";
+      layoutMiddlePaneRightBox .style.backgroundImage = "url('../images/sand-dark-mode.jpg')";
+      layoutBottomPane.style.background = "black";
   }}
   setGameStyleMode();
 
@@ -173,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!farRightColumn && squares[i + 1].classList.contains('mine')) total ++;
                   
         // bottom-left diagonal of the current square (every square but the far left side and bottom row).
-        if (!farRightColumn && !bottomRow && squares[i + width - 1].classList.contains('mine')) total ++;
+        if (!farLeftColumn && !bottomRow && squares[i + width - 1].classList.contains('mine')) total ++;
 
         // below the current square (every square but the bottom row).
         if (!bottomRow && squares[i + width].classList.contains('mine')) total ++;
@@ -324,3 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+
+
