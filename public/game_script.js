@@ -204,13 +204,15 @@ document.addEventListener('DOMContentLoaded', () => {
   //Right click adds a flag to the square
   function addFlag(square) {
     if (isGameOver) return;
-    if (!square.classList.contains('checked') && (flagsUsed < mines)) {
-      if (!square.classList.contains('flag')) {
+    if (!square.classList.contains('checked')) {
+      if (!square.classList.contains('flag') && (flagsUsed < mines)) {
         square.classList.add('flag');
         square.innerHTML = '🚩';
         flagsUsed ++;
         checkWin();
-      } else {
+        console.log(square.classList.contains('flag'))
+      }
+      else if (square.classList.contains('flag')) {
         square.classList.remove('flag');
         square.innerHTML = '';
         flagsUsed --;
